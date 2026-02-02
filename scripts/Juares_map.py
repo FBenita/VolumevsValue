@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 13 06:55:20 2026
-
-@author: L03565094
-"""
-
 import pandas as pd
 import numpy as np
 import geopandas as gpd
@@ -14,9 +7,9 @@ from shapely.geometry import box
 import os
 
 # --- 1. CONFIGURATION ---
-results_path = r'C:\Users\L03565094\Dropbox\Francisco\Papers2023\Tocayo\NNI\03 Results'
+results_path = r'C:\'
 input_file = os.path.join(results_path, 'MEXICO_PANEL_WITH_EXOGENOUS_VARS.csv')
-mun_shape_path = r'C:\Users\L03565094\Dropbox\Francisco\Papers2023\Tocayo\NNI\01 Data\Shapefiles\Admin_Divisions_2025\00mun_REPROJECTED.gpkg'
+mun_shape_path = r'C:\00mun_REPROJECTED.gpkg'
 maps_folder = os.path.join(results_path, '01_Maps')
 
 # --- 2. LOAD DATA ---
@@ -131,4 +124,5 @@ for i, ax in enumerate(axes):
 plt.subplots_adjust(top=0.85, wspace=0.15)
 plt.savefig(os.path.join(maps_folder, 'Figure_1_Final_Methodology_Juarez.png'), dpi=300, bbox_inches='tight')
 print(f"[-] Final High-Precision Figure saved to: {maps_folder}")
+
 plt.show()
