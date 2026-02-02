@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Feb  2 17:58:30 2026
-
-@author: L03565094
-"""
-
-
 import pandas as pd
 import numpy as np
 import statsmodels.api as sm
@@ -13,7 +5,7 @@ import statsmodels.formula.api as smf
 import os
 
 # --- 1. CONFIGURATION ---
-results_path = r'C:\Users\L03565094\Dropbox\Francisco\Papers2023\Tocayo\NNI\03 Results'
+results_path = r'C:\'
 file_path = os.path.join(results_path, 'MEXICO_PANEL_WITH_EXOGENOUS_VARS.csv')
 output_folder = os.path.join(results_path, '00_Final_Paper_Figures')
 
@@ -99,4 +91,5 @@ if results:
     res_df = pd.DataFrame(results)
     csv_path = os.path.join(output_folder, 'Robustness_Check_Coefficients.csv')
     res_df.to_csv(csv_path, index=False)
+
     print(f"[-] Robustness coefficients saved to: {csv_path}")
