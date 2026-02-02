@@ -1,17 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
 import pandas as pd
 import geopandas as gpd
 from sklearn.cluster import DBSCAN
 import os
 
 # --- 1. CONFIGURATION ---
-results_path = r'C:\Users\L03565094\Dropbox\Francisco\Papers2023\Tocayo\NNI\03 Results'
+results_path = r'C:\'
 grid_path = os.path.join(results_path, 'mexico_5km_grid_master.gpkg')
 
 years = [2010, 2015, 2019, 2025]
@@ -93,7 +86,7 @@ print(f"SUCCESS: Clustering data saved to {out_csv}")
 
 
 
-########### Merge with industyr counts
+########### Merge industyr counts
 
 
 
@@ -101,7 +94,7 @@ import pandas as pd
 import os
 
 # --- 1. SETUP PATHS ---
-results_path = r'C:\Users\L03565094\Dropbox\Francisco\Papers2023\Tocayo\NNI\03 Results'
+results_path = r'C:\'
 
 # --- 2. LOAD FILES ---
 print("Loading Sectoral Panel (Y)...")
@@ -120,8 +113,6 @@ cols_to_fill = [c for c in master_panel.columns if 'cluster' in c]
 master_panel[cols_to_fill] = master_panel[cols_to_fill].fillna(0).astype(int)
 
 # --- 4. CALCULATE GROWTH VARIABLES ---
-# It is helpful to have pre-calculated growth for your paper
-# Example: Change in Cluster Intensity (2010-2025)
 master_panel['cluster_growth_10_25'] = master_panel['cluster_n_2025'] - master_panel['cluster_n_2010']
 
 # Example: Change in Sector 33 (Machinery) Counts
@@ -132,5 +123,6 @@ if 'count_33_2010' in master_panel.columns:
 output_file = os.path.join(results_path, 'FINAL_MEXICO_MANUFACTURING_PANEL.csv')
 print(f"Saving Final Master Panel to: {output_file}")
 master_panel.to_csv(output_file, index=False)
+
 
 print(f"DONE! Your database has {len(master_panel)} rows and {len(master_panel.columns)} variables.")
