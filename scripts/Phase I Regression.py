@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 13 04:53:06 2026
-
-@author: L03565094
-"""
-
 import pandas as pd
 import numpy as np
 import os
@@ -13,7 +6,7 @@ from libpysal.weights import KNN
 import libpysal
 
 # --- 1. CONFIGURATION ---
-results_path = r'C:\Users\L03565094\Dropbox\Francisco\Papers2023\Tocayo\NNI\03 Results'
+results_path = r'C:\'
 output_folder = os.path.join(results_path, '00_Final_Paper_Figures')
 file_path = os.path.join(results_path, 'MEXICO_PANEL_WITH_EXOGENOUS_VARS.csv')
 
@@ -147,4 +140,5 @@ print("FINAL PAPER TABLE PREVIEW")
 print("="*80)
 print(paper_ready_table.fillna("-"))
 print("="*80)
+
 print(f"[-] Saved to: {csv_path}")
