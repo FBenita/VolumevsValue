@@ -1,16 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 13 00:48:36 2026
-
-@author: L03565094
-"""
-
 import pandas as pd
 import geopandas as gpd
 import os
 
 # --- 1. CONFIGURATION ---
-results_path = r'C:\Users\L03565094\Dropbox\Francisco\Papers2023\Tocayo\NNI\03 Results'
+results_path = r'C:\'
 
 print("--- LOADING COMPONENTS ---")
 
@@ -24,18 +17,17 @@ keys_df = gdf_keys[['grid_id', 'CVEGEO_2010', 'CVEGEO_2015', 'CVEGEO_2020', 'CVE
 for col in ['CVEGEO_2010', 'CVEGEO_2015', 'CVEGEO_2020', 'CVEGEO_2025']:
     keys_df[col] = keys_df[col].astype(str).str.split('.').str[0].str.zfill(5)
 
-# B. THE BODY (Factory Counts)
+# B. (Factory Counts)
 panel_path = os.path.join(results_path, 'FINAL_MEXICO_MANUFACTURING_PANEL.csv')
 panel_df = pd.read_csv(panel_path)
 
-# C. THE SOUL (Economic Census)
+# C.  (Economic Census)
 census_path = os.path.join(results_path, 'mexico_manufacturing_panel_analytical_panel.csv')
 census_raw = pd.read_csv(census_path)
 
 # --- PREPARE CENSUS DATA ---
 census_raw['sector_group'] = census_raw['rama'].astype(str).str.slice(0, 2)
 
-# *** THE CRITICAL FIX IS HERE ***
 # Mapping: {Census Year : Target Analysis Year}
 year_map = {
     2008: 2010, 
@@ -62,7 +54,7 @@ print("\n--- STARTING MERGE ---")
 final_dfs = []
 sectors = ['31', '32', '33']
 
-# Map Analysis Year to the specific Spatial Column
+# Map Analysis Year
 year_to_key_col = {
     2010: 'CVEGEO_2010',
     2015: 'CVEGEO_2015',
@@ -119,4 +111,5 @@ for df_year in final_dfs:
 
 output_file = os.path.join(results_path, 'FINAL_FULL_SPATIAL_ECONOMIC_PANEL_READY_V2.csv')
 final_master.to_csv(output_file, index=False)
+
 print(f"DONE! File saved to: {output_file}")
