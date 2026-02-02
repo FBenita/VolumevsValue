@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 13 06:05:46 2026
-
-@author: L03565094
-"""
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -130,3 +123,4 @@ plt.savefig(plot_path, dpi=300, bbox_inches='tight')
 print(f"[-] Figure 7 saved to: {plot_path}")
 
 plt.show()
+
