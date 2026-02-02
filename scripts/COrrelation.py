@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 13 03:38:21 2026
-
-@author: L03565094
-"""
-
-
 import pandas as pd
 import numpy as np
 import os
@@ -13,8 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # --- 1. CONFIGURATION ---
-# UPDATE THIS PATH to your file location
-results_path = r'C:\Users\L03565094\Dropbox\Francisco\Papers2023\Tocayo\NNI\03 Results'
+results_path = r'C:\'
 file_path = os.path.join(results_path, 'mexico_manufacturing_panel.csv')
 output_folder = os.path.join(results_path, '00_Final_Paper_Figures')
 
@@ -26,7 +17,6 @@ print("Loading Census Data...")
 df = pd.read_csv(file_path)
 
 # --- 2. DATA PREPARATION ---
-# Ensure 'rama' is string for matching (e.g., '3361')
 df['rama'] = df['rama'].astype(str)
 df['cve_mun'] = df['cve_mun'].astype(str)
 
@@ -136,4 +126,5 @@ if semi_code in validation_df.columns:
 plt.tight_layout()
 plot_path = os.path.join(output_folder, 'Appendix_Validation_Plots.png')
 plt.savefig(plot_path, dpi=300)
+
 print(f"[-] Plots saved to: {plot_path}")
