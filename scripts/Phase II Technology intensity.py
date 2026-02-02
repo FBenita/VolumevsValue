@@ -12,7 +12,7 @@ import os
 import statsmodels.formula.api as smf
 
 # --- 1. CONFIGURATION ---
-results_path = r'C:\Users\L03565094\Dropbox\Francisco\Papers2023\Tocayo\NNI\03 Results'
+results_path = r'C:\'
 output_folder = os.path.join(results_path, '00_Final_Paper_Figures')
 file_path = os.path.join(results_path, 'MEXICO_PANEL_WITH_EXOGENOUS_VARS.csv')
 
@@ -49,7 +49,6 @@ print(f"Phase 2 Sample Size: {len(df_reg)}")
 
 # --- 4. RUN REGRESSION (POOLED OLS) ---
 print("Estimating Phase 2 Model...")
-# Assuming your CSV has a column 'state_id' or 'entidad'
 mod_pooled = smf.ols("ln_K_L ~ X_USA_Trend + X_CDMX_Trend + X_Port_Trend + X_Cluster + C(year)", 
                      data=df_reg).fit(cov_type='cluster', cov_kwds={'groups': df_reg['grid_id']})
 
@@ -129,4 +128,5 @@ ax.legend(loc='lower right')
 plot_path = os.path.join(output_folder, 'Figure_7_Capital_Intensity.png')
 plt.savefig(plot_path, dpi=300, bbox_inches='tight')
 print(f"[-] Figure 7 saved to: {plot_path}")
+
 plt.show()
